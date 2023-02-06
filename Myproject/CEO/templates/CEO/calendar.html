@@ -1,0 +1,45 @@
+﻿{% extends 'CEO/home.html' %}
+{% load static %}
+{% block content%}        
+
+{% block title %}
+Calendar
+{% endblock %}
+
+
+<div class="clearfix" >
+	<a class="btn btn-info left" href="{% url 'calendar' %}?{{ prev_month }}"> Previous Month </a>
+	<a class="btn btn-info right" href="{% url 'calendar' %}?{{ next_month }}"> Next Month </a>
+	<a class="btn btn-info right" href="{% url 'event_new' %}"> New Event </a>
+</div>
+
+
+{{ calendar }}
+
+
+{% endblock %}
+
+ <!-- Bootstrap core JavaScript-->
+ <script src="{% static 'CEO/vendor/jquery/jquery.min.js' %}"></script>
+ <script src="{% static 'CEO/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+ <!-- Core plugin JavaScript-->
+ <script src="{% static 'CEO/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+ <!-- Custom scripts for all pages-->
+ <script src="{% static 'CEO/js/sb-admin-2.min.js' %}"></script>
+
+ <!-- Page level plugins -->
+ <script src="{% static 'CEO/vendor/chart.js/Chart.min.js' %}"></script>
+
+ <!-- Page level custom scripts -->
+ <script src="{% static 'CEO/js/demo/chart-area-demo.js' %}"></script>
+ <script src="{% static 'CEO/js/demo/chart-pie-demo.js' %}"></script>
+
+
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+ crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+ crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+ crossorigin="anonymous"></script>

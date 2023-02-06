@@ -1,0 +1,111 @@
+{% extends 'CEO/home.html' %}
+{% load static %}
+{% block content%}
+{% if u_msg %}
+<div class="alert alert-success" role="alert">
+    {{ u_msg }}
+</div>
+{% endif %}
+
+<div class="container-fluid">                
+    <h2><strong>Edit task :</strong> </h2> 
+    <hr>
+      <div class="row clearfix">
+       
+    </div>
+
+<div class="container">
+  
+    <div class="main-body">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <form action="{% url 'c_edittask' tid.title %}" method="post" >
+                        {% csrf_token %}
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">First Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                                <input type="text" class="form-control" name='firstname' disabled value={{tid.firstname}}>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Title</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                                <input type="text" class="form-control" name="title" value={{tid.title}}>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Description</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                                <input type="text" class="form-control" name="description" value={{tid.description}}>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">created_at</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                                <input type="datetime-local" class="form-control" name="created_at" value={{tid.created_at}}>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Due Date</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="date" class="form-control" name="end_date" value="{{tid.end_date}}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Priority</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" name="priority" value="{{tid.priority}}">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="submit" class="btn btn-primary px-4" value="Save Changes">
+                                <a class="btn btn-xs fs-10 btn-bold btn-info" href="{% url 'task' %}">All Tasks</a>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'CEO/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'CEO/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'CEO/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'CEO/js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{% static 'CEO/vendor/chart.js/Chart.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'CEO/js/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 'CEO/js/demo/chart-pie-demo.js' %}"></script>

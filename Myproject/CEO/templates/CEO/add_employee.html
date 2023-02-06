@@ -1,0 +1,203 @@
+{% extends 'CEO/home.html' %} 
+{% block content%} 
+{%load static%}   
+<section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        
+                    </div>            
+                    
+                        
+                        <!-- <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="..\dashboard\index.html"><i class="zmdi zmdi-home"></i> Digital Society</a></li>
+                                                            <li class="breadcrumb-item">Members</li>
+                                                                                        <li class="breadcrumb-item active">Add Members</li>
+                                                    </ul> -->
+                    
+                </div>
+            </div>
+<div class="container-fluid">                
+  <h2><strong>Add Employee :</strong> </h2> 
+  <hr>
+    <div class="row clearfix">
+     
+    </div>
+  
+     
+               
+          <form action="{% url 'add_employee' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              
+                  <div class="body">
+                      <div class="row clearfix">
+                          <div class="col-sm-4">
+                              <input placeholder="--Select role--" name="role" class="form-control" list="user">                        
+                              <datalist id="role">                           
+                                  <option value="{{uid.role}}">
+                                  </option>                           
+                              </datalist>
+                          </div>
+                          <div class="col-sm-4">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" name="email" placeholder="User Email">
+                              </div>
+                          </div>
+                          <div class="col-sm-4">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" name="password" placeholder="Password">
+                              </div>
+                          </div>                           
+<!--                                  
+                          <div class="col-sm-12">
+                              <input type="submit" class="btn btn-primary btn-round" value="submit" />
+                              <input type="submit" class="btn btn-default btn-round btn-success" value="cancel" />
+                          </div> -->
+                          <br>
+                      </div>                         
+                  </div>
+<br>
+              <div class="row clearfix">
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <input type="text" class="form-control" name="job_profile" placeholder="Job Profile">
+                      </div>
+                  </div>
+              <div class="col-sm-4">
+                  <input placeholder="--Select Gender--" name="gender" class="form-control" list="gender">
+                  <datalist id="gender">
+                      <option value="Male">
+                      <option value="Female">
+                      <option value="Prefer not to say">
+                  </datalist>
+              </div>
+              <div class="col-sm-4">
+                  
+                  <input placeholder="--Marital Status--" name="marital_status" class="form-control" list="status">
+                  <datalist id="status">
+                      <option value="Married">
+                      <option value="Un-married">
+                      <option value="widow">
+                      <option value="widower">
+                      <option value="Prefer not to say">                  
+                  </datalist>     
+              </div>
+              
+              </div>
+                  <br>
+              <div class="row clearfix">
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <input type="text" class="form-control" name= "salary" placeholder="salary">
+                      </div>
+                  </div>
+                  
+                  
+                  
+              </div>
+              <div class="row clearfix">
+                  <div class="col-sm-4">                     
+                      <div class="form-group">
+                          <input type="text" class="form-control" name="birthdate" placeholder="Date of Birth (YYYY-MM-DD )">
+                      </div>
+                  </div>   
+                  <div class="col-sm-4">                     
+                      <div class="form-group">
+                          <input type="text" class="form-control" name="joiningdate" placeholder="Date of Joining (YYYY-MM-DD )">
+                      </div>
+                  </div>                      
+                  
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <input type="text" class="form-control" name= "contact" placeholder="Contact Number">
+                      </div>
+                  </div>
+                  
+                  <!-- <div class="col-sm-8">
+                      <div class="form-group">
+                          <input type="text" class="form-control" name="email" placeholder="Enter Your Email">
+                      </div>
+                  </div> -->
+                                          
+                  <div class="col-sm-12">
+                      <div class="form-group">
+                          <textarea rows="4" class="form-control no-resize" name="address" placeholder="Address"></textarea>
+                      </div> 
+                  </div>
+                
+              </div>
+              <div class="row clearfix">
+                  <div class="col-md-12">
+                      <!-- <div class="card"> -->
+                          <div class="header">
+                              <h5><strong>Employee </strong> Profile Picture </h5>                                    
+                          </div>                                
+                          <div class="col-sm-12">
+                              <div class="form-group">
+                                  <input type="File" name="profile_pic" class="form-control">
+                              </div>
+                          </div>                                                                
+                      </div>
+              </div>
+              <div class="row clearfix">
+                  <div class="col-md-12">
+                      <!-- <div class="card"> -->
+                          <div class="header">
+                              <h5><strong>Employee </strong>Id Proof </h5>
+                            
+                          </div>
+                        
+                          <div class="col-sm-12">
+                              <div class="form-group">
+                                  <input type="File" name="id_proof" class="form-control">
+                              </div>
+                          </div>
+                        
+                          
+                      </div>
+              </div>
+              <div class="col-sm-12">
+                  <input type="submit" class="btn btn-primary btn-round" value="submit" />
+                  <input type="submit" class="btn btn-default btn-round btn-success" value="cancel" />
+              </div>
+              <hr>
+              
+          </form>
+           
+              
+    </div>
+
+
+</div>
+
+    
+           
+        </section>
+        {% endblock %}
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="{% static 'CEO/vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'CEO/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+       
+        <!-- Core plugin JavaScript-->
+        <script src="{% static 'CEO/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+       
+        <!-- Custom scripts for all pages-->
+        <script src="{% static 'CEO/js/sb-admin-2.min.js' %}"></script>
+       
+        <!-- Page level plugins -->
+        <script src="{% static 'CEO/vendor/chart.js/Chart.min.js' %}"></script>
+       
+        <!-- Page level custom scripts -->
+        <script src="{% static 'CEO/js/demo/chart-area-demo.js' %}"></script>
+        <script src="{% static 'CEO/js/demo/chart-pie-demo.js' %}"></script>

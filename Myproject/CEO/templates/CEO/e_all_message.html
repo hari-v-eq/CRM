@@ -1,0 +1,116 @@
+{% extends 'CEO/ehome.html' %}
+{% load static %}
+{% block content%}
+{% if u_msg %}
+<div class="alert alert-success" role="alert">
+    {{ u_msg }}
+</div>
+{% endif %}
+
+<div class="container">
+  <section class="panel">
+                    <header class="panel-heading">
+                        <h3> All Messages<small class="text-muted"></small></h3>
+                       
+                        <span class="pull-right">
+                            <!-- <button type="button" id="loading-btn" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i> Refresh</button> -->
+                            <a href="{% url 'e_add_message' %}" class=" btn btn-success btn-xs"> Create New Message</a>
+                            <a href="{% url 'e_all_message' %}" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i>Refresh</a>
+                        </span>
+                    </header>
+                    
+                    <!-- <div class="panel-body">
+                        <div class="row">
+  
+                            <div class="col-md-4">
+                                <div class="input-group"><input type="text" placeholder="Search Here" class="input-sm form-control"> <span class="input-group-btn">
+                                <button type="button" class="btn btn-sm btn-success"> Go! </button> </span></div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <br>
+                   
+                    <table class="table table-hover p-table">
+
+                        <thead>
+                  
+
+                        <tr>
+                          
+                            <!-- <th>Firstname</th>
+                            <th>Email</th>  -->
+                           
+
+                          
+                            <th>Message</th>
+                        
+                            <th>Replies</th> 
+                            <th>Action</th> 
+                         
+                        </tr>
+                      
+                        </thead>
+                       
+                    {% for m in msg_id %}
+                        <tbody>
+                        <tr>
+                            <!-- <td class="p-team">
+                                <a>{{m.firstname}}</a>
+                            </td>
+                            <td class="p-team">
+                                <a>{{m.email}}</a>
+                            </td> -->
+                            <td class="p-name">
+                                <a href="#">{{m.message}}</a>
+                                <br>
+                                <small>{{m.created_at}}</small>
+                            </td>
+                          
+                           
+                         
+                            <td class="p-team">
+                                <a><strong>{{m.status}}</strong></a>
+                            </td>
+                           
+                            <!-- {% if task.status.is_inprogress %}
+                            <td>active</td>
+                            {% else %}
+                            <td>inactive</td>
+                            {% endif %} -->
+                        
+                        
+                            
+                           
+                            <td>
+                                <!-- <a href="project_details.html" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a> -->
+                                <a href="{% url 'e_edit_message' m.email %}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                <!-- <input type="submit" name="delete" value="Delete" onclick="return confirmDelete();"> -->
+                                <a href="{% url 'e_delete_message' m.email %}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete?')"><i class="fa fa-trash-o"></i>Delete</a>
+                               
+                            </td>
+                        </tr>
+                        <tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                   
+                </section>
+  </div>
+{% endblock %}
+
+ <!-- Bootstrap core JavaScript-->
+ <script src="{% static 'CEO/vendor/jquery/jquery.min.js' %}"></script>
+ <script src="{% static 'CEO/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+ <!-- Core plugin JavaScript-->
+ <script src="{% static 'CEO/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+ <!-- Custom scripts for all pages-->
+ <script src="{% static 'CEO/js/sb-admin-2.min.js' %}"></script>
+
+ <!-- Page level plugins -->
+ <script src="{% static 'CEO/vendor/chart.js/Chart.min.js' %}"></script>
+
+ <!-- Page level custom scripts -->
+ <script src="{% static 'CEO/js/demo/chart-area-demo.js' %}"></script>
+ <script src="{% static 'CEO/js/demo/chart-pie-demo.js' %}"></script>

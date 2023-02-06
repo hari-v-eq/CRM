@@ -1,0 +1,175 @@
+{% extends 'CEO/home.html' %}
+{% load static %}
+{% block content%}
+{% if u_msg %}
+<div class="alert alert-success" role="alert">
+    {{ u_msg }}
+</div>
+{% endif %}
+<div class="container">
+  
+    <div class="main-body">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="{{ mid.profile_pic.url }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+                            <div class="mt-3">
+                                <h4>{{mid.firstname}} {{mid.lastname}}</h4>
+                                <p class="text-secondary mb-1">{{mid.job_profile}}</p>
+                                <p class="text-muted font-size-sm">{{mid.address}}</p>
+                                <!-- <button class="btn btn-primary">Follow</button>
+                                <button class="btn btn-outline-primary">Message</button> -->
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card">
+                    <form action="{% url 'edit' mid.firstname %}" method="post" >
+                        {% csrf_token %}
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">First Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                                <input type="text" class="form-control" name='firstname' value={{mid.firstname}}>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Last Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                                <input type="text" class="form-control" name="lastname" value={{mid.lastname}}>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Job Profile</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                                <input type="text" class="form-control" name="job_profile" value={{mid.job_profile}}>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Contact</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                                <input type="text" class="form-control" name="contact" value={{mid.contact}}>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Address</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" name="address" value="{{mid.address}}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Salary</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" name="salary" value="{{mid.salary}}">
+                            </div>
+                        </div>
+                     
+
+
+
+
+
+
+
+                        
+                        <!-- <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Birth date</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" name="birthdate" value="{{mid.birthdate}}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Joining Date</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" class="form-control" name="joiningdate" value="{{mid.joiningdate}}">
+                            </div>
+                        </div> -->
+                        
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="submit" class="btn btn-primary px-4" value="Save Changes">
+                                <a class="btn btn-xs fs-10 btn-bold btn-info" href="{% url 'all_manager' %}">All Manager</a>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                   
+                </div>
+                <!-- <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="d-flex align-items-center mb-3">Project Status</h5>
+                                <p>Web Design</p>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p>Website Markup</p>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p>One Page</p>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p>Mobile Template</p>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p>Backend API</p>
+                                <div class="progress" style="height: 5px">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+ <!-- Bootstrap core JavaScript-->
+ <script src="{% static 'CEO/vendor/jquery/jquery.min.js' %}"></script>
+ <script src="{% static 'CEO/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+ <!-- Core plugin JavaScript-->
+ <script src="{% static 'CEO/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+ <!-- Custom scripts for all pages-->
+ <script src="{% static 'CEO/js/sb-admin-2.min.js' %}"></script>
+
+ <!-- Page level plugins -->
+ <script src="{% static 'CEO/vendor/chart.js/Chart.min.js' %}"></script>
+
+ <!-- Page level custom scripts -->
+ <script src="{% static 'CEO/js/demo/chart-area-demo.js' %}"></script>
+ <script src="{% static 'CEO/js/demo/chart-pie-demo.js' %}"></script>

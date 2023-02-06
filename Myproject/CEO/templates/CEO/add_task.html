@@ -1,0 +1,127 @@
+
+{% extends 'CEO/home.html' %} 
+{% block content%} 
+{% load static %}
+
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <h3>Add Task <small class="text-muted"></small></h3>
+                <hr>
+            </div>            
+            
+        </div>
+    </div>
+    <div class="container-fluid">                
+        
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                
+                   
+        <form action="{% url 'add_task' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        
+        <div class="row clearfix">
+            <div class="col-sm-4">
+                <input placeholder="--Select Email--" name="email" class="form-control" list="user">                        
+                <datalist id="email">  
+                    {% for i in all_user %}                         
+                    <option value="{{i.email_id}}">
+                    {% endfor %}
+
+                    </option>                           
+                </datalist>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="firstname" placeholder="Firstname">
+                </div>
+            </div>
+            
+               
+            <div class="col-sm-4">
+                  
+                <input placeholder="--Priority--" name="priority" class="form-control" list="status">
+                <datalist id="status">
+                    <option value="Low">
+                    <option value="Medium">
+                    <option value="High">
+                    <option value="Urgent">
+                                 
+                </datalist>     
+            </div>
+          
+                 
+                <div class="col-sm-4">                     
+                    <div class="form-group">
+                        <input type="datetime-local" class="form-control" name="start_date" placeholder="Created at (YYYY-MM-DD )"><small>Created at</small>
+                    </div>
+                </div> 
+                <div class="col-sm-4">                     
+                    <div class="form-group">
+                        <input type="date" class="form-control" name="end_date" placeholder="End Date (YYYY-MM-DD )">
+                        <small>End Date</small>
+                    </div>
+                </div>
+                    
+          
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="title" placeholder="Title">
+                </div>
+            </div>   
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="status" placeholder="Pending">
+                </div>
+            </div>                    
+                                     
+                
+            <div class="col-sm-12">
+                    <div class="form-group">
+                        <textarea rows="4" class="form-control no-resize" name="description" placeholder="Enter Task description"></textarea>
+                    </div> 
+                </div>
+            </div>
+          
+            
+        </div>     
+                   
+       
+                   
+                <div class="col-sm-12">
+                    <input type="submit" class="btn btn-primary btn-round" value="submit" />
+                    <input type="reset" class="btn btn-default btn-round btn-secondary" value="reset" />
+                    <a class="btn btn-xs fs-10 btn-bold btn-info" href="{% url 'task' %}">All Tasks</a>
+                   
+                </div>
+       
+    </div>
+</div>
+</div>
+</form>
+
+    </div>
+</section>
+
+
+
+{% endblock %}
+
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'CEO/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'CEO/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{% static 'CEO/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{% static 'CEO/js/sb-admin-2.min.js' %}"></script>
+
+<!-- Page level plugins -->
+<script src="{% static 'CEO/vendor/chart.js/Chart.min.js' %}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{% static 'CEO/js/demo/chart-area-demo.js' %}"></script>
+<script src="{% static 'CEO/js/demo/chart-pie-demo.js' %}"></script>

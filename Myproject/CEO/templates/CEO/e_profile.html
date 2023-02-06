@@ -1,0 +1,241 @@
+{% extends 'CEO/ehome.html' %}
+{% block content%}
+{% load static %}
+
+{% if u_msg %}
+<div class="alert alert-success" role="alert">
+    {{ u_msg }}
+</div>
+{% endif %}
+
+
+ <section class="content home">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <h2>Employee Profile <small class="text-muted"></small></h2>
+                    </div>            
+                    <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                      
+                        
+                        
+                            <button class="btn btn-white btn-icon btn-round d-none d-md-inline-block float-right m-l-10" type="button">
+                                <i class="zmdi zmdi-edit"></i>
+                            </button>
+                        
+                        <ul class="breadcrumb float-md-right">
+                            <li class="breadcrumb-item"><a href="{% url 'ehome' %}"><i class="zmdi zmdi-home"></i> Dream Company</a></li>
+                                                          
+                            <li class="breadcrumb-item active">Employee Profile</li>
+                            </ul>
+                            
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="container-fluid">                
+              <hr>            
+    <div class="row clearfix profile-page">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+              <img src="{{ eid.profile_pic.url }}" alt="Admin" class="rounded-circle" width="150">
+              <div class="mt-3">
+                <h4>{{eid.firstname}} {{eid.lastname}}</h4>
+                <p class="text-secondary mb-1">{{uid.role}}</p>
+                <p class="text-muted font-size-sm">{{eid.address}}</p>
+                <p class="text-muted font-size-sm">{{eid.contact}}</p>
+                <!-- <button class="btn btn-primary">Follow</button>
+                <button class="btn btn-outline-primary">Message</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- <div class="col-lg-4 col-md-12">
+            <div class="card profile-header">
+                <div class="body text-center">
+                    <div class="profile-image"> <img src="{{ cid.profile_pic.url}}" alt=""> </div>
+                    <div>
+                        <h4 class="m-b-0"><strong>{{ cid.firstname }} {{ cid.lastname}}</strong></h4>
+                        <small>{{cid.role}}</small>
+                        <span class="job_post">{{cid.role}}</span> -->
+                        <!-- <p>795 Folsom Ave, Suite 600<br> San Francisco, CADGE 94107</p> -->
+                        <!-- <p> {{ cid.address}}</p>
+                    </div> -->
+                    <!-- <div>
+                        <button class="btn btn-primary btn-round">Follow</button>
+                        <button class="btn btn-primary btn-round btn-simple">Message</button>
+                    </div> -->
+                   
+<!--                    
+                </div>                    
+            </div>                                -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="workingtime">
+                        <h6>Working Time</h6>
+                        <small class="text-muted">Monday to Saturday</small>
+                        <p>10:00 AM - 07:00 PM</p>
+                       
+                    </div>
+    
+                </div>
+            </div> 
+            
+            <div class="card">
+             
+            </div>                 
+        </div>
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <div class="card-body">
+                <ul class="nav nav-tabs">
+                   
+                    <!-- <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#about">About</a></li> -->
+                    <li class="nav-item"><a>Reset Password??</a></li>                        
+                </ul>
+                <div class="tab-content">
+                   
+              </div>
+                    <div class="tab-pane body" >
+                        <form action=" {% url 'e_profile' %} " method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="email" value="{{ uid.email}}" readonly disabled>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Current Password" name="currentpassword">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="New Password"  name="newpassword">
+                            </div>
+                            <br><br>
+                            <input type="submit" class="btn btn-info btn-round" value=" Save Changes">
+                        </form>
+                    
+                        
+                        
+                        <!-- <div class="row clearfix">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="First Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Last Name">
+                                </div>
+                            </div>                                    
+                            <div class="col-lg-4 col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="City">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="E-mail">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Country">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group m-b-10">
+                                    <textarea rows="4" class="form-control no-resize" placeholder="Address Line 1"></textarea>
+                                </div>
+                            </div> -->
+                            <!-- <div class="col-md-12">
+                                <div class="checkbox">
+                                    <input id="procheck2" type="checkbox">
+                                    <label for="procheck2">New task notifications</label>
+                                </div>
+                                <div class="checkbox">
+                                    <input id="procheck3" type="checkbox">
+                                    <label for="procheck3">New friend request notifications</label>
+                                </div>
+                            </div> -->
+                            <!-- <div class="col-md-12">
+                                <button class="btn btn-primary btn-round">Save Changes</button>
+                            </div> -->
+                        </div>
+                    </div>                        
+                </div>
+            </div>
+            <!-- <div class="card">
+                <div class="header">
+                    <h2><strong>Recent</strong> Activity</h2>
+                    <ul class="header-dropdown">
+                        <li class="remove">
+                            <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body user_activity">
+                    <div class="streamline b-accent">
+                        <div class="sl-item">
+                            <img class="user rounded-circle" src="..\assets\images\xs\avatar4.jpg" alt="">
+                            <div class="sl-content">
+                                <h5 class="m-b-0">Admin Birthday</h5>
+                                <small>Jan 21 <a href="javascript:void(0);" class="text-info">Sophia</a>.</small>
+                            </div>
+                        </div>
+                        <div class="sl-item">
+                            <img class="user rounded-circle" src="..\assets\images\xs\avatar5.jpg" alt="">
+                            <div class="sl-content">
+                                <h5 class="m-b-0">Add New Contact</h5>
+                                <small>30min ago <a href="javascript:void(0);">Alexander</a>.</small>
+                                <small><strong>P:</strong> +264-625-2323</small>
+                                <small><strong>E:</strong> maryamamiri@gmail.com</small>
+                            </div>
+                        </div>
+                        <div class="sl-item">
+                            <img class="user rounded-circle" src="..\assets\images\xs\avatar6.jpg" alt="">
+                            <div class="sl-content">
+                                <h5 class="m-b-0">General Surgery</h5>
+                                <small>Today <a href="javascript:void(0);">Grayson</a>.</small>
+                                <small>The standard chunk of Lorem Ipsum used since the 1500s is reproduced</small>
+                            </div>
+                        </div>
+                        <div class="sl-item">
+                            <img class="user rounded-circle" src="..\assets\images\xs\avatar7.jpg" alt="">
+                            <div class="sl-content">
+                                <h5 class="m-b-0">General Surgery</h5>
+                                <small>45min ago <a href="javascript:void(0);" class="text-info">Fidel Tonn</a>.</small>
+                                <small><strong>P:</strong> +264-625-2323</small>
+                                <small>The standard chunk of Lorem Ipsum used since the 1500s is reproduced used since the 1500s is reproduced</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                -->
+        </div>
+    </div>
+
+            </div>
+        
+        </section>
+{% endblock %} 
+
+   <!-- Bootstrap core JavaScript-->
+   <script src="{% static 'CEO/vendor/jquery/jquery.min.js' %}"></script>
+   <script src="{% static 'CEO/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+   <!-- Core plugin JavaScript-->
+   <script src="{% static 'CEO/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+   <!-- Custom scripts for all pages-->
+   <script src="{% static 'CEO/js/sb-admin-2.min.js' %}"></script>
+
+   <!-- Page level plugins -->
+   <script src="{% static 'CEO/vendor/chart.js/Chart.min.js' %}"></script>
+
+   <!-- Page level custom scripts -->
+   <script src="{% static 'CEO/js/demo/chart-area-demo.js' %}"></script>
+   <script src="{% static 'CEO/js/demo/chart-pie-demo.js' %}"></script>
